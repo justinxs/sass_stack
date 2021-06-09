@@ -1,0 +1,23 @@
+{
+  "name": "sass_stack",
+  "version": "1.0.0",
+  "description": "learn sass",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinxs/sass_stack.git"
+  },
+  "keywords": [
+    "sass",
+    "scss"
+  ],
+  "author": "Justin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinxs/sass_stack/issues"
+  },
+  "homepage": "https://github.com/justinxs/sass_stack#readme"
+}
