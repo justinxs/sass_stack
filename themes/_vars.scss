@@ -1,0 +1,49 @@
+/**
+ * 按照 keys 顺序传值生成主题项
+ * 若传值长度小于 keys 主题的数量，则取第一个值作为默认值
+ */
+$themeList: 'dark' 'light' 'default';
+$themeCount: length($themeList);
+@function createThemeItem($items...) {
+    $themeMap: ();
+    $len: length($items);
+    @for $i from 1 through $themeCount {
+        $name: nth($themeList, $i);
+        @if $len >= $i {
+            $themeMap: map-merge($themeMap, ($name: nth($items, $i)));
+        } @else {
+            $themeMap: map-merge($themeMap, ($name: nth($items, 1)));
+        }
+    };
+
+    @return $themeMap;
+};
+
+
+
+/**
+ * 主题配置map
+ * 注：新增一个主题scss文件（不以 _ 开头的scss）需要重新 npm run start
+ */
+
+$themes: (
+    primary-color: createThemeItem(#1890ff, #f5222d, #fa541c),
+    success-color: createThemeItem(#67C23A),
+    warning-color: createThemeItem(#E6A23C),
+    danger-color: createThemeItem(#F56C6C),
+    info-color: createThemeItem(#909399),
+    primary-font-c: createThemeItem(#303133, #303133, #fff),
+    regular-font-c: createThemeItem(#606266),
+    secondary-font-c: createThemeItem(#909399),
+    placeholder-font-c: createThemeItem(#C0C4CC),
+    base-border-c: createThemeItem(#DCDFE6),
+    light-border-c: createThemeItem(#E4E7ED),
+    lighter-border-c: createThemeItem(#EBEEF5),
+    extra-light-border-c: createThemeItem(#F2F6FC),
+    base-bg: createThemeItem(black, black, pink),
+    logo-block: createThemeItem(
+        (background: #000, border-radius: 20%),
+        (background: pink, border-radius: 40%),
+        (background: yellow, border-radius: 50%)
+    )
+);

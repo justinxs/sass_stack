@@ -1,0 +1,19 @@
+
+@function getMapVal($key, $map) {
+    $val: null;
+    @if map-has-key($map, $key) {
+        $val: map-get($map, $key);
+    } @else {
+        $val: map-get($map, 'default');
+    }
+
+    @return $val
+};
+
+@function getTheme($name, $themes) {
+    $theme: ();
+    @each $key, $map in $themes {
+        $theme: map-merge($theme, ($key: getMapVal($name, $map)));
+    }
+    @return $theme
+};
